@@ -14,13 +14,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// const corsOptions = {
-//   origin: 'http://localhost:5173',
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-
-// Load environment variables from .env file
 dotenv.config();
 
 // Middleware for parsing JSON bodies and cookies

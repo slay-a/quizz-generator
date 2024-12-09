@@ -43,7 +43,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
         Cookies.set("jwt_token", jwt_token, {secure: false});
 
         // Navigate to a protected route after successful login
-        navigate("/sample-page");
+        navigate("/quizz-app");
       } else {
         setErrorMessage(response.data.message || "Login failed.");
       }

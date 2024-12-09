@@ -45,7 +45,7 @@ import {
     },
     {
       id: uniqueId(),
-      title: 'Quiz Generator',
+      title: 'COMP 324',
       icon: IconTypography,
       href: '/quiz-app',
     },
