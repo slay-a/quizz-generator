@@ -38,7 +38,7 @@ Run the middleware server:
 node server.js
 ```
 
-This will start the middleware server, typically at `http://localhost:3500`. You can configure the port in the `server.js` file if needed.
+This will start the middleware server, typically at `APIClient`. You can configure the port in the `server.js` file if needed.
 
 ### 6. Make Changes in Your Branch
 You can now make any changes to the middleware in your own branch. Ensure you do **not** make any changes directly to the `laya_mvc` branch.

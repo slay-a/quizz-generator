@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Button, Alert } from "@mui/material";
 import { Stack } from "@mui/system";
 import CustomTextField from "../../../components/forms/theme-elements/CustomTextField";
-import axios from "axios";
+import APIClient from "../../../../APIClient";
 
 const AuthRegister = ({ title, subtitle, subtext }) => {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3500/user/register", formData);
+      const response = await APIClient.post("/user/register", formData);
 
       if (response.data.success) {
         setSuccessMessage("Registration successful! Please log in.");

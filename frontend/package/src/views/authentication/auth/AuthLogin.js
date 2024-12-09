@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import CustomTextField from "../../../components/forms/theme-elements/CustomTextField";
-import axios from "axios";
+import APIClient from "../../../../APIClient";
 import Cookies from "js-cookie"; // Import js-cookie
 
 // eslint-disable-next-line react/prop-types
@@ -31,8 +31,8 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3500/user/login",
+      const response = await APIClient.post(
+        "/user/login",
         { email, password },
         { withCredentials: true } // Enable sending/receiving cookies
       );
@@ -181,7 +181,7 @@ export default AuthLogin;
 //     }
 
 //     try {
-//       const response = await axios.post("http://localhost:3500/user/login", {
+//       const response = await axios.post("/user/login", {
 //         email,
 //         password,
 //       }, { withCredentials: true }); // Enable cookies to be sent/received

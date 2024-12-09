@@ -12,7 +12,7 @@ import {
   MenuItem,
   InputLabel
 } from "@mui/material";
-import axios from "axios";
+import APIClient from "../../../APIClient";
 
 const QuizApp = () => {
   const [chapters, setChapters] = useState([]);
@@ -32,7 +32,7 @@ const QuizApp = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const questionsRes = await axios.get("http://localhost:3500/questions/data", {
+        const questionsRes = await APIClient.get("/questions/data", {
           withCredentials: true,
         });
         const q = questionsRes.data.questions || [];
@@ -72,8 +72,8 @@ const QuizApp = () => {
       }
       const difficultyToStore = difficultyFilter === "" ? "all" : difficultyFilter;
       try {
-        const res = await axios.get(
-          `http://localhost:3500/quizresults?chapter=${encodeURIComponent(chapterFilter)}&difficulty=${encodeURIComponent(difficultyToStore)}`,
+        const res = await APIClient.get(
+          `/quizresults?chapter=${encodeURIComponent(chapterFilter)}&difficulty=${encodeURIComponent(difficultyToStore)}`,
           { withCredentials: true }
         );
         if (res.data.success && res.data.attempt) {
@@ -143,7 +143,7 @@ const QuizApp = () => {
 
     // POST score, chapter, difficulty, incorrect_questions
     try {
-      await axios.post("http://localhost:3500/save/quizresult", 
+      await APIClient.post("/save/quizresult", 
         {
           chapter: chapterFilter,
           difficulty: difficultyToStore,
@@ -384,7 +384,7 @@ export default QuizApp;
 //   MenuItem,
 //   InputLabel,
 // } from "@mui/material";
-// import axios from "axios";
+// import APIClient from "axios";
 
 // const QuizApp = () => {
 //   const [chapters, setChapters] = useState([]);
@@ -404,7 +404,7 @@ export default QuizApp;
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const questionsRes = await axios.get("http://localhost:3500/questions/data", {
+//         const questionsRes = await axios.get("/questions/data", {
 //           withCredentials: true,
 //         });
 //         const q = questionsRes.data.questions || [];

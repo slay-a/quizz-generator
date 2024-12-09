@@ -16,7 +16,7 @@ import {
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Edit as EditIcon } from "@mui/icons-material";
-import axios from "axios";
+import APIClient from "../../../APIClient";
 import Cookies from "js-cookie";
 
 const SamplePage = () => {
@@ -32,7 +32,7 @@ const SamplePage = () => {
     const fetchHistory = async () => {
       try {
         const jwt_token = Cookies.get("jwt_token");
-        const response = await axios.get("http://localhost:3500/history", {
+        const response = await APIClient.get("/history", {
           headers: {
             Authorization: `Bearer ${jwt_token}`,
           },
@@ -54,7 +54,7 @@ const SamplePage = () => {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/transform", {
+      const response = await APIClient.post("http://127.0.0.1:5000/transform", {
         text: inputText,
         author: authorName,
       });
@@ -76,7 +76,7 @@ const SamplePage = () => {
       };
       const jwt_token = Cookies.get("jwt_token");
 
-      await axios.post("http://localhost:3500/save/text", payload, {
+      await APIClient.post("/save/text", payload, {
         headers: {
           Authorization: `Bearer ${jwt_token}`,
         },
@@ -225,7 +225,7 @@ export default SamplePage;
 //     const fetchHistory = async () => {
 //       try {
 //         const jwt_token = Cookies.get("jwt_token");
-//         const response = await axios.get("http://localhost:3500/history", {
+//         const response = await axios.get("/history", {
 //           headers: {
 //             Authorization: `Bearer ${jwt_token}`,
 //           },
